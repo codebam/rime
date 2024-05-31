@@ -65,8 +65,8 @@ class Renderer {
 		);
 	}
 
-	update(){
-		if(!this.isLoopRunning || !this.renderOnLoop) {
+	update() {
+		if (!this.isLoopRunning || !this.renderOnLoop) {
 			this.render();
 		}
 	}
@@ -81,23 +81,23 @@ class Renderer {
 
 	private isLoopRunning = false;
 	private renderOnLoop = true;
-	mainloop(){
-		if(!this.isLoopRunning) return;
-		if(this.renderOnLoop) this.render();
-		setImmediate(() => this.mainloop());
+	mainloop() {
+		if (!this.isLoopRunning) return;
+		if (this.renderOnLoop) this.render();
+		setImmediate(() => { this.mainloop() });
 	}
-	startloop(){
+	startloop() {
 		this.isLoopRunning = true;
 		this.mainloop();
 	}
-	stoploop(){
+	stoploop() {
 		this.isLoopRunning = false;
 	}
-	loopRender(render = true){
+	loopRender(render = true) {
 		this.renderOnLoop = render;
 	}
 
-	alive(){
+	alive() {
 		this.loopRender(false);
 		this.startloop();
 	}
